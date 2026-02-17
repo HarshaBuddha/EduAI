@@ -1,0 +1,26 @@
+# Core LangChain packages
+langchain-core>=1.2.0
+langchain-community>=0.4.0
+langchain-text-splitters>=0.3.0
+
+# Vector Store & Embeddings
+chromadb>=1.5.0
+langchain-chroma>=1.1.0
+langchain-huggingface>=1.2.0
+sentence-transformers>=2.2.0
+
+# LLM Integration
+langchain-ollama>=1.0.0
+
+# PDF Processing
+pypdf>=3.0.0
+
+# Standard library dependencies (usually auto-installed, but listed for completeness)
+# These are dependencies of the above packages:
+# - huggingface-hub
+# - transformers
+# - torch (for sentence-transformers)
+# - numpy
+# - pydantic
+# - httpx
+# - requests
