@@ -2,6 +2,9 @@ import json
 import re
 from retriever import retrieve_context
 from llm import get_llm
+from backend.db import SessionLocal
+from backend.analytics import compute_performance
+
 
 llm = get_llm()
 
@@ -71,3 +74,20 @@ def _format_quiz(questions):
             lines.append(f"   {letter}. {opt}{marker}")
         lines.append("")
     return "\n".join(lines) if lines else str(questions)
+
+def generate_adaptive_quiz():
+
+    db = SessionLocal()
+    perf = compute_performance(db)
+    db.close()
+
+    weak_topic = perf["weak_topic"]
+
+    if not weak_topic:
+        return "No attempts available yet."
+
+    return generate_quiz(
+        topic=weak_topic,
+        difficulty="Basic",
+        num_questions=3
+    )
