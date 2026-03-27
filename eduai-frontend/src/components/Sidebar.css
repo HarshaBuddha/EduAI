@@ -1,0 +1,122 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    border-right: 1px solid var(--navy-light);
+  }
+  
+  .sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.75rem 1.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: var(--gold);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  
+  .brand-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin-top: 1px;
+  }
+  
+  .sidebar-nav {
+    flex: 1;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .nav-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--radius-md);
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s ease;
+  }
+  
+  .nav-item:hover {
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.85);
+  }
+  
+  .nav-item--active {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+  
+  .nav-item--active .nav-icon {
+    color: var(--gold);
+  }
+  
+  .nav-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  
+  .footer-tagline {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.05em;
+    font-style: italic;
+    font-family: var(--font-display);
+  }

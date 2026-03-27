@@ -1,0 +1,216 @@
+.dash-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+    padding: 2rem 0;
+  }
+  
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--ivory-dark);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-card);
+    border-top: 3px solid var(--navy-light);
+  }
+  
+  .stat-card--gold {
+    border-top-color: var(--gold);
+  }
+  
+  .stat-card--green {
+    border-top-color: #2e7d52;
+  }
+  
+  .stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  
+  .stat-value--sm {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+  
+  .stat-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+  
+  .dash-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .topic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .topic-row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  
+  .topic-name {
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  .topic-pct {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .topic-pct--good { color: var(--success); }
+  .topic-pct--weak { color: var(--danger); }
+  
+  .progress-fill--weak {
+    background: linear-gradient(90deg, #e74c3c, #e8a090) !important;
+  }
+  
+  .topics-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .overview-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+  }
+  
+  .overview-label--weak { color: var(--danger); }
+  .overview-label--good { color: var(--success); }
+  
+  .overview-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  @media (max-width: 1100px) {
+    .stat-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .dash-two-col {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Adaptive quiz preview in dashboard */
+  .adaptive-questions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  
+  .adaptive-question {
+    border: 1px solid var(--ivory-dark);
+    border-radius: var(--radius-md);
+    padding: 0.875rem;
+    background: var(--ivory);
+  }
+  
+  .adaptive-q-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  
+  .adaptive-q-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+  
+  .adaptive-options {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .adaptive-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0.3rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  
+  .adaptive-option--correct {
+    background: #f0fdf4;
+    color: var(--success);
+    font-weight: 500;
+  }
+  
+  .adaptive-opt-label {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ivory-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+  }
+  
+  .adaptive-option--correct .adaptive-opt-label {
+    background: var(--success);
+    color: white;
+  }
+  
+  .adaptive-opt-text {
+    flex: 1;
+  }
+  
+  .adaptive-correct-mark {
+    font-size: 11px;
+    color: var(--success);
+    font-weight: 700;
+    margin-left: auto;
+  }

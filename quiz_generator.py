@@ -42,7 +42,7 @@ Return ONLY the JSON array. Nothing else."""
 
 
 def _parse_quiz_response(response):
-    """Extract and parse JSON from LLM response. Returns parsed list or formatted string."""
+    """Extract and parse JSON from LLM response. Returns parsed list when possible."""
     if not isinstance(response, str):
         response = str(response)
     # Strip markdown code blocks if present
@@ -53,27 +53,10 @@ def _parse_quiz_response(response):
     try:
         data = json.loads(text)
         if isinstance(data, list):
-            return _format_quiz(data)
+            return data
         return response
     except json.JSONDecodeError:
         return response
-
-
-def _format_quiz(questions):
-    """Format parsed quiz as readable string."""
-    lines = []
-    for i, q in enumerate(questions, 1):
-        if not isinstance(q, dict):
-            continue
-        question = q.get("question", "?")
-        options = q.get("options", [])
-        answer = q.get("answer", "")
-        lines.append(f"{i}. {question}")
-        for letter, opt in zip("ABCD", options[:4]):
-            marker = " ✓" if letter == answer else ""
-            lines.append(f"   {letter}. {opt}{marker}")
-        lines.append("")
-    return "\n".join(lines) if lines else str(questions)
 
 def generate_adaptive_quiz():
 
