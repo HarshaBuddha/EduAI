@@ -40,4 +40,20 @@ export const api = {
 
   // Adaptive quiz
   getAdaptiveQuiz: () => request("/ai/adaptive-quiz"),
+
+  // Knowledge base — upload a PDF (multipart/form-data, no JSON Content-Type header)
+  uploadPdf: async (file) => {
+    const form = new FormData();
+    form.append("file", file);
+    const res = await fetch(`${BASE_URL}/ai/knowledge/upload`, {
+      method: "POST",
+      body: form,
+      // Do NOT set Content-Type — browser sets it with the correct boundary
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: `Upload failed (${res.status})` }));
+      throw Object.assign(new Error(err.detail || "Upload failed"), { status: res.status, detail: err.detail });
+    }
+    return res.json();
+  },
 };

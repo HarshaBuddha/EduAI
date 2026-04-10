@@ -1,0 +1,426 @@
+.ku-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  
+  /* ── Drop zone ─────────────────────────────────────────────────── */
+  
+  .drop-zone {
+    border: 2px dashed var(--ivory-dark);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    outline: none;
+  }
+  
+  .drop-zone:focus-visible {
+    box-shadow: 0 0 0 3px rgba(47, 64, 112, 0.15);
+  }
+  
+  .drop-zone:hover,
+  .drop-zone--over {
+    border-color: var(--navy-light);
+    background: #f5f7fc;
+  }
+  
+  .drop-zone--has-file {
+    border-style: solid;
+    border-color: var(--navy-light);
+    cursor: default;
+  }
+  
+  .drop-zone--uploading {
+    border-color: var(--gold);
+    background: #fefdf8;
+    cursor: default;
+    pointer-events: none;
+  }
+  
+  /* Empty state */
+  .dz-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 2.5rem 1rem;
+    text-align: center;
+  }
+  
+  .dz-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--ivory-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  
+  .dz-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  
+  .dz-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  
+  .dz-hint-pill {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--ivory-dark);
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--ivory);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  
+  /* File selected state */
+  .dz-selected {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 1.5rem;
+    width: 100%;
+  }
+  
+  .dz-file-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: #eef2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy-light);
+    flex-shrink: 0;
+  }
+  
+  .dz-file-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .dz-file-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .dz-file-size {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  
+  .dz-remove {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--ivory-dark);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  
+  .dz-remove:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: #fef2f2;
+  }
+  
+  /* Uploading state */
+  .dz-uploading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 2.5rem 1rem;
+    text-align: center;
+  }
+  
+  .dz-upload-ring {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dz-upload-ring svg {
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    top: 0; left: 0;
+  }
+  
+  .dz-upload-ring > svg + * {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--navy);
+  }
+  
+  .dz-ring-spin {
+    transform-origin: center;
+    animation: ring-spin 1.2s linear infinite;
+  }
+  
+  @keyframes ring-spin {
+    to { stroke-dashoffset: -126; }
+  }
+  
+  .dz-upload-label {
+    font-size: 14px;
+    color: var(--text-primary);
+  }
+  
+  .dz-upload-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  
+  /* ── Upload button ──────────────────────────────────────────────── */
+  
+  .ku-upload-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.7rem;
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+  
+  /* ── Result cards ───────────────────────────────────────────────── */
+  
+  .ku-result {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid;
+    margin-bottom: 1rem;
+  }
+  
+  .ku-result--success {
+    background: #f0fdf4;
+    border-color: #86efac;
+  }
+  
+  .ku-result--error {
+    background: #fef2f2;
+    border-color: #fca5a5;
+  }
+  
+  .ku-result-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--success);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .ku-result-icon--error {
+    background: var(--danger);
+  }
+  
+  .ku-result-body {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .ku-result-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  
+  .ku-result-file {
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 8px;
+  }
+  
+  .ku-result-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  .ku-stat {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ku-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--success);
+    line-height: 1;
+  }
+  
+  .ku-stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+  }
+  
+  .ku-result-msg {
+    font-size: 12px;
+    color: var(--success);
+    font-style: italic;
+  }
+  
+  .ku-error-hint {
+    font-size: 13px;
+    color: var(--danger);
+    line-height: 1.5;
+  }
+  
+  .ku-upload-another {
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 0.35rem 0.75rem;
+    align-self: center;
+  }
+  
+  /* ── Side panel ─────────────────────────────────────────────────── */
+  
+  .ku-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 0;
+  }
+  
+  .ku-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  
+  .ku-step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  
+  .ku-tips-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  
+  .ku-tips ul {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .ku-tips li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  
+  /* ── Session history ────────────────────────────────────────────── */
+  
+  .ku-history {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .ku-history-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .ku-history-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-sm);
+    background: var(--ivory-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  
+  .ku-history-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .ku-history-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .ku-history-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+  
+  @media (max-width: 1000px) {
+    .ku-layout {
+      grid-template-columns: 1fr;
+    }
+  }

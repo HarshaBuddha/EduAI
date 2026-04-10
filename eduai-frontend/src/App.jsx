@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Chatbot from "./pages/Chatbot";
 import Quiz from "./pages/Quiz";
 import Summarizer from "./pages/Summarizer";
+import KnowledgeUpload from "./pages/KnowledgeUpload";
 import "./App.css";
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       case "chat": return <Chatbot />;
       case "quiz": return <Quiz />;
       case "summarizer": return <Summarizer />;
+      case "knowledge": return <KnowledgeUpload />;
       default: return <Dashboard />;
     }
   };
